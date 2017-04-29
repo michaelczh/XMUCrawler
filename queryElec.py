@@ -142,9 +142,9 @@ def query_info():
 
         if money_info:
             #采用正则表达式，分别取出余额和剩余电量
-            money_obj = re.findall(".\d.\d+",money_info)
-            money_left = money_obj[0]
-            enery_left = money_obj[1]
+            money_obj = re.search(".*账户余额：(.*)元.*剩余电量：(.*)度",money_info)
+            money_left = money_obj.group(1)  # 剩余电费
+            energy_left = money_obj.group(2)  # 剩余电量
             print(build + "-房间号码：" + roomid + "，账户余额为"+ money_left +"元,剩余电量为"+ enery_left +"度" )
 
 
